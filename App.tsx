@@ -1,35 +1,13 @@
+import { ShoppingListItem } from "./components/ShoppingListItem";
 import { theme } from "./theme";
-import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from "react-native";
 
 export default function App() {
-
-    const handleDelete = () => {
-    Alert.alert(
-      "Are you sure you want to delete this?",
-      "It will be gone for good",
-      [
-        {
-          text: "Yes",
-          onPress: () => console.log("Ok, deleting."),
-          style: "destructive",
-        },
-        { text: "Cancel", style: "cancel" },
-      ],
-    );
-  };
-
   return (
     <View style={styles.container}>
-      <View style={styles.itemContainer}>
-        <Text style={styles.itemText}>Coffee</Text>
-        <TouchableOpacity 
-          onPress={handleDelete}
-          activeOpacity={0.8}
-          style={styles.button}
-        >
-        <Text style={styles.buttonText}>Delete</Text>
-        </TouchableOpacity>
-      </View>
+      <ShoppingListItem name="Coffee" isCompleted />
+      <ShoppingListItem name="Tea" />
+      <ShoppingListItem name="Milk" isCompleted />
     </View>
   );
 }
@@ -38,28 +16,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colorWhite,
-    justifyContent: 'center',
-  },
-
-  itemText: {fontSize: 18, fontWeight: "200"},
-  itemContainer:{
-      paddingVertical:16,
-      paddingHorizontal: 8,
-      borderBottomColor: theme.colorCerulean,
-      borderBottomWidth: 1,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-  },
-  button: {
-    backgroundColor: theme.colorBlack,
-    padding: 8,
-    borderRadius: 6,
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    letterSpacing: 1,
+    justifyContent: "center",
   },
 });
